@@ -4,8 +4,8 @@ import random
 import os
 
 
-WIDTH = 900
-HEIGHT = 900
+WIDTH = 600
+HEIGHT = 600
 FPS = 24
 game_folder = os.path.dirname(__file__)
 img_folder = os.path.join(game_folder, 'imagenes')
@@ -19,20 +19,25 @@ BLUE = (0, 0, 255)
 
 #classes
 class BuenosAires:
-    img = 'ba.png'
+    img = '01-BA.png'
     destx = 100
     desty = 100
 
-class SantaCruz:
-    img = 'sc.png'
+class Chaco:
+    img = '02-CH.png'
     destx = 600
+    desty = 400
+
+class LaPampa:
+    img = '03-LP.png'
+    destx = 700
     desty = 400
     
 class Ficha(pygame.sprite.Sprite):
     def __init__(self, icono, destx, desty):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(os.path.join(img_folder, icono)).convert()  
-        self.image.set_colorkey(WHITE)
+        self.image.set_colorkey(GREEN)
         self.rect =  self.image.get_rect()
         self.rect.center = (WIDTH / 2, HEIGHT / 2)
         self.drag = False
@@ -65,12 +70,12 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
-piezas = [BuenosAires, SantaCruz]
+piezas = [BuenosAires, Chaco,LaPampa]
 cnt = 0
 ficha = Ficha(piezas[cnt].img,piezas[cnt].destx, piezas[cnt].desty)
 all_sprites = pygame.sprite.Group()
 all_sprites.add(ficha)
-imag = pygame.image.load("imagenes\\AR-B.png")
+imag = pygame.image.load("imagenes\\prov.png")
 
 # Game loop
 running = True
@@ -94,7 +99,7 @@ while running:
  
     # Draw / render
     screen.fill(WHITE)
-    screen.blit(imag, (ficha.destx,ficha.desty))
+    screen.blit(imag,(0,0) )#, (ficha.destx,ficha.desty))
     all_sprites.draw(screen)
 
     all_sprites.update()
