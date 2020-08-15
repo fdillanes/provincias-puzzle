@@ -2,7 +2,7 @@
 import pygame
 import random
 import os
-
+from fichas import *
 
 WIDTH = 600
 HEIGHT = 600
@@ -17,22 +17,7 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 
-#classes
-class BuenosAires:
-    img = '01-BA.png'
-    destx = 100
-    desty = 100
 
-class Chaco:
-    img = '02-CH.png'
-    destx = 600
-    desty = 400
-
-class LaPampa:
-    img = '03-LP.png'
-    destx = 700
-    desty = 400
-    
 class Ficha(pygame.sprite.Sprite):
     def __init__(self, icono, destx, desty):
         pygame.sprite.Sprite.__init__(self)
@@ -70,7 +55,7 @@ pygame.mixer.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("My Game")
 clock = pygame.time.Clock()
-piezas = [BuenosAires, Chaco,LaPampa]
+piezas = [BuenosAires, Chaco, LaPampa, Chubut, Tucuman, Corrientes, EntreRios, SanLuis, SanJuan, LaRioja, Mendoza, SantaCruz, RioNegro, TierraDelFuego, SantaFe, Catamarca, Jujuy, Misiones, Formosa, Cordoba, SantiagoDelEstero, Salta, Neuquen]
 cnt = 0
 ficha = Ficha(piezas[cnt].img,piezas[cnt].destx, piezas[cnt].desty)
 all_sprites = pygame.sprite.Group()
